@@ -1,0 +1,9 @@
+﻿@model decimal?
+@if (Model.HasValue)
+{
+    <b style="color:purple">@Model.Value.ToString("c")</b>
+}
+else
+{
+    <text>N/A</text>
+}

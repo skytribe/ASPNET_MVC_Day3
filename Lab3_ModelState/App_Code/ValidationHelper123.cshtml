@@ -1,0 +1,75 @@
+﻿@helper ValidationHelperLeft(System.Web.Mvc.ModelStateDictionary ms)
+{
+    //Validate
+    if (!ms.IsValid)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        foreach (var item in ms)
+        {
+            if (item.Value.Errors.Count > 0)
+            {
+
+                sb.Append("[" + item.Key + "]: ");
+                foreach (var err in item.Value.Errors)
+                {
+                    sb.Append(err.ErrorMessage + "  ");
+
+                }
+            }
+        }
+        var errorMessage = sb.ToString();
+        <marquee behavior="scroll" direction="left">@errorMessage </marquee>
+    }
+
+
+}
+@helper ValidationHelperUp(System.Web.Mvc.ModelStateDictionary ms)
+{
+    //Validate
+    if (!ms.IsValid)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        foreach (var item in ms)
+        {
+            if (item.Value.Errors.Count > 0)
+            {
+                sb.AppendLine("\n[" + item.Key + "]: ");
+                foreach (var err in item.Value.Errors)
+                {
+                    sb.AppendLine(err.ErrorMessage + "  ");
+
+
+                }
+            }
+        }
+        var errorMessage = sb.ToString();
+        <marquee behavior="scroll" direction="up"><div>@errorMessage</div> </marquee>
+    }
+}
+
+@*@helper ValidationHelperUp2(System.Web.Mvc.ModelStateDictionary ms)
+{
+    //Validate
+    if (!ms.IsValid)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        foreach (var item in ms)
+        {
+            if (item.Value.Errors.Count > 0)
+            {
+                sb.AppendLine("\n[" + item.Key + "]: ");
+                foreach (var err in item.Value.Errors)
+                {
+                    sb.AppendLine(err.ErrorMessage + "  ");
+
+
+                }
+            }
+        }
+        
+        var errorMessage = sb.ToString();
+        
+        
+        <marquee behavior="scroll" direction="up"><div>@errorMessage</div> </marquee>
+    }
+}*@
